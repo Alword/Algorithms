@@ -32,8 +32,8 @@ namespace Alg.Graphs
         /// <summary>
         /// Depth-first search Implementation
         /// </summary>
-        /// <param name="s"></param>
-        public void FindDF(int vNumber)
+        /// <param name="vNumber">vertex Number</param>
+        public void DFS(int vNumber)
         {
             Stack<int> stack = new Stack<int>();
             bool[] isVisited = new bool[adjency.Count];
@@ -49,6 +49,33 @@ namespace Alg.Graphs
                     {
                         isVisited[connectedVertex] = true;
                         stack.Push(connectedVertex);
+                    }
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Breadth-first search
+        /// </summary>
+        /// <param name="vNumber"></param>
+        public void BFS(int vNumber)
+        {
+            bool[] isVisited = new bool[adjency.Count];
+
+            Queue<int> queue = new Queue<int>();
+            isVisited[vNumber] = true;
+            queue.Enqueue(vNumber);
+
+            while (queue.Count != 0)
+            {
+                vNumber = queue.Dequeue();
+                foreach (int connectedVertex in adjency[vNumber])
+                {
+                    if (!isVisited[connectedVertex])
+                    {
+                        isVisited[connectedVertex] = true;
+                        queue.Enqueue(connectedVertex);
                     }
                 }
             }
