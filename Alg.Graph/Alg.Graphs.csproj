@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Alg.Graphs</AssemblyName>
+    <RootNamespace>Alg.Graphs</RootNamespace>
   </PropertyGroup>
 
 </Project>
