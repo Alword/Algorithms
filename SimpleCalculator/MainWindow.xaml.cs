@@ -52,7 +52,7 @@ namespace SimpleCalculator
 
             if (!lastNumber.Equals(0))
             {
-                tempNumber *= lastNumber / 100 * lastNumber;
+                tempNumber = tempNumber / 100 * lastNumber;
             }
             ResultLabel.Content = tempNumber;
         }
