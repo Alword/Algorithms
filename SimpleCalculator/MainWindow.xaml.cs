@@ -4,6 +4,7 @@ using System.Windows.Controls;
 
 namespace SimpleCalculator
 {
+    // ReSharper disable once RedundantExtendsListEntry
     public partial class MainWindow : Window
     {
         private double lastNumber, result;
@@ -13,7 +14,7 @@ namespace SimpleCalculator
         {
             InitializeComponent();
 
-            ResultLabel.Content = "12345";
+            ResultLabel.Content = "0";
             AcButton.Click += AcButton_Click;
             ChangeButton.Click += ChangeButton_Click;
             PercentButton.Click += PercentButton_Click;
@@ -85,7 +86,6 @@ namespace SimpleCalculator
             string content = (sender as Button)?.Content.ToString();
             if (content == null) return;
             int selectedValue = int.Parse(content);
-            ;
 
             if (ResultLabel.Content.ToString().Equals("0"))
                 ResultLabel.Content = $"{selectedValue}";
