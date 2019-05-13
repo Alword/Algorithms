@@ -48,10 +48,13 @@ namespace SimpleCalculator
 
         private void PercentButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!double.TryParse(ResultLabel.Content.ToString(), out lastNumber)) return;
+            if (!double.TryParse(ResultLabel.Content.ToString(), out double tempNumber)) return;
 
-            lastNumber /= 100;
-            ResultLabel.Content = lastNumber;
+            if (!lastNumber.Equals(0))
+            {
+                tempNumber *= lastNumber / 100 * lastNumber;
+            }
+            ResultLabel.Content = tempNumber;
         }
 
         private void ChangeButton_Click(object sender, RoutedEventArgs e)
@@ -65,6 +68,8 @@ namespace SimpleCalculator
         private void AcButton_Click(object sender, RoutedEventArgs e)
         {
             ResultLabel.Content = "0";
+            result = 0;
+            lastNumber = 0;
         }
 
         private void OperationButton_Click(object sender, RoutedEventArgs e)
@@ -128,7 +133,10 @@ namespace SimpleCalculator
         }
         public static double Division(double a, double b)
         {
-            return a / b;
+            if (!b.Equals(0)) return a / b;
+            MessageBox.Show("Division by zero", "Wrong operation", MessageBoxButton.OK, MessageBoxImage.Error);
+            return 0;
+
         }
     }
 }
