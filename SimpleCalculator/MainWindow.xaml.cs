@@ -43,17 +43,13 @@ namespace SimpleCalculator
             }
 
             ResultLabel.Content = result;
-
         }
 
         private void PercentButton_Click(object sender, RoutedEventArgs e)
         {
             if (!double.TryParse(ResultLabel.Content.ToString(), out double tempNumber)) return;
 
-            if (!lastNumber.Equals(0))
-            {
-                tempNumber = tempNumber / 100 * lastNumber;
-            }
+            if (!lastNumber.Equals(0)) tempNumber = tempNumber / 100 * lastNumber;
             ResultLabel.Content = tempNumber;
         }
 
@@ -88,55 +84,18 @@ namespace SimpleCalculator
         {
             string content = (sender as Button)?.Content.ToString();
             if (content == null) return;
-            int selectedValue = int.Parse(content); ;
+            int selectedValue = int.Parse(content);
+            ;
 
             if (ResultLabel.Content.ToString().Equals("0"))
-            {
                 ResultLabel.Content = $"{selectedValue}";
-            }
             else
-            {
                 ResultLabel.Content += $"{selectedValue}";
-            }
         }
 
         private void DotButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (!ResultLabel.Content.ToString().Contains("."))
-            {
-                ResultLabel.Content = $"{ResultLabel.Content}.";
-            }
-        }
-    }
-
-    public enum SelectedOperator
-    {
-        Addition,
-        Subtraction,
-        Multiplication,
-        Division
-    }
-
-    public class SimpleMath
-    {
-        public static double Addition(double a, double b)
-        {
-            return a + b;
-        }
-        public static double Subtraction(double a, double b)
-        {
-            return a - b;
-        }
-        public static double Multiplication(double a, double b)
-        {
-            return a * b;
-        }
-        public static double Division(double a, double b)
-        {
-            if (!b.Equals(0)) return a / b;
-            MessageBox.Show("Division by zero", "Wrong operation", MessageBoxButton.OK, MessageBoxImage.Error);
-            return 0;
-
+            if (!ResultLabel.Content.ToString().Contains(".")) ResultLabel.Content = $"{ResultLabel.Content}.";
         }
     }
 }
