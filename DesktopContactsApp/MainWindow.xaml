@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopContactsApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="350" Width="450">
+    <StackPanel Margin="5">
+        <Button Content="New contact" Click="ButtonBase_OnClick" />
+    </StackPanel>
 </Window>
