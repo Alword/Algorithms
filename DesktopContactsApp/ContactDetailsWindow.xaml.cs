@@ -14,11 +14,22 @@ namespace DesktopContactsApp
         {
             this.contact = contact;
             InitializeComponent();
+            NameTextBox.Text = contact.Name;
+            EmailTextBox.Text = contact.Email;
+            PhoneNameTextBox.Text = contact.Phone;
         }
 
         private void UpdateButton_OnClick(object sender, RoutedEventArgs e)
         {
-
+            contact.Name = NameTextBox.Text;
+            contact.Email = EmailTextBox.Text;
+            contact.Phone = PhoneNameTextBox.Text;
+            using (var connection = new SQLiteConnection(App.DatabasePath))
+            {
+                connection.CreateTable<Contact>();
+                connection.Update(contact);
+            }
+            Close();
         }
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
